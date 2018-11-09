@@ -2,18 +2,18 @@
 
 <p>
   <strong>Email:</strong>
-  <%= @user.email %>
+  <%= user.email %>
 </p>
 
 <p>
   <strong>Firstname:</strong>
-  <%= @user.firstname %>
+  <%= user.firstname %>
 </p>
 
 <p>
   <strong>Last name:</strong>
-  <%= @user.last_name %>
+  <%= user.last_name %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Edit', edit_user_path(user) %> |
 <%= link_to 'Back', users_path %>
