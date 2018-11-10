@@ -17,3 +17,10 @@
 
 <%= link_to 'Edit', edit_user_path(user) %> |
 <%= link_to 'Back', users_path %>
+
+<% if histroy? %>
+  <h2>Email Histroy</h2>
+  <% user_versions.each do |u| %>
+    <p><%= u[:email] %></p>
+  <% end %>
+<% end %>
