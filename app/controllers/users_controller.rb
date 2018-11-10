@@ -1,32 +1,22 @@
 class UsersController < ApplicationController
   helper_method :user
 
-  # GET /users
-  def index
-  end
-
-  # GET /users/1
-  def show
-  end
-
-  # GET /users/new
-  def new
-  end
-
-  # GET /users/1/edit
-  def edit
-  end
-
   # POST /users
   def create
-    update_user
-    redirect_to user, notice: 'User was successfully created.'
+    if update_user.save
+      redirect_to user, notice: 'User was successfully created.'
+    else
+      redirect_to new_path, notice: user.errors.full_messages.join(', ')
+    end
   end
 
   # PATCH/PUT /users/1
   def update
-    update_user
-    redirect_to user, notice: 'User was successfully updated.'
+    if update_user.save
+      redirect_to user, notice: 'User was successfully updated.'
+    else
+      redirect_to user, notice: user.errors.full_messages.join(', ')
+    end
   end
 
   # DELETE /users/1
@@ -44,7 +34,6 @@ class UsersController < ApplicationController
   def update_user
     user.tap do |u|
       u.assign_attributes(user_params)
-      u.save!
     end
   end
 
